@@ -48,5 +48,14 @@ namespace LoadLogistics.Services
             }
             return fulFillcount;
         }
+
+        //It returns the customer list having atleast one load
+        public IEnumerable<Customer> GetCustomersWithAtleasetOneLoad()
+        {
+            var customersWithLoads = from c in TestData.customers
+                                     where TestData.loads.Any(ld => ld.Customer.Id == c.Id)
+                                     select c;
+            return customersWithLoads;
+        }
     }
 }
