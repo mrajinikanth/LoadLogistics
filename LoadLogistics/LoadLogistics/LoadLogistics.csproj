@@ -52,6 +52,7 @@
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\StockService.cs" />
     <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>
