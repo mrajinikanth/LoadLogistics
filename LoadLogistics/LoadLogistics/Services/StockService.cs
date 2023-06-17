@@ -50,7 +50,7 @@ namespace LoadLogistics.Services
         }
 
         //It returns the customer list having atleast one load
-        public IEnumerable<Customer> GetCustomersWithAtleasetOneLoad()
+        public IEnumerable<Customer> GetCustomersWithAtleastOneLoad()
         {
             var customersWithLoads = from c in TestData.customers
                                      where TestData.loads.Any(ld => ld.Customer.Id == c.Id)

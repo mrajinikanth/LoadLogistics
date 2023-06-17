@@ -15,7 +15,7 @@ namespace LoadLogistics
             Console.WriteLine("Customer's fulfiled load count : " + loadCount);
 
 
-            IEnumerable<Customer> customerList = stock.GetCustomersWithAtleasetOneLoad();
+            IEnumerable<Customer> customerList = stock.GetCustomersWithAtleastOneLoad();
         }
     }
 }
