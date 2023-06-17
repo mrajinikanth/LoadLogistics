@@ -1,9 +1,6 @@
 ﻿using LoadLogistics.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LoadLogistics.Services
 {
@@ -30,6 +27,26 @@ namespace LoadLogistics.Services
                 }
             }
             return true;
+        }
+
+        // It returns loads count which is fulfilled by warehouse for a customer
+        public int GetNumberOfLoadsThatCanBeFulfilled(Customer customer)
+        {
+            int fulFillcount = 0;
+            // Get all the loads of the customer ordered by delivery time
+            List<Load> customerLoads = TestData.loads.Where(ld => ld.Customer.Id == customer.Id).OrderBy(ld => ld.DeliveryTime).ToList();
+            foreach (var load in customerLoads)
+            {
+                foreach (var warehouse in TestData.warehouses)
+                {
+                    if (CanFulfillLoadFromWarehouse(load, warehouse))
+                    {
+                        fulFillcount++;
+                        break;
+                    }
+                }
+            }
+            return fulFillcount;
         }
     }
 }
